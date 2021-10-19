@@ -1,0 +1,73 @@
+{
+    "name": "piece",
+    "version": "0.1.0",
+    "private": true,
+    "description": "描述信息1.0",
+    "publisher": "yl123",
+    "scripts": {
+        "start": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "build1": "vue-cli-service build --prod --output-hashing none",
+        "build:js1": "rollup -c && rollup -c --environment MINIFY",
+        "build:scss1": "sass src/scss/buefy-build.scss | node ./build/banner.js > dist/dist1.css && cleancss -o dist/dist1.min.css dist/dist1.css",
+        "build:lib1": "rimraf dist && npm run build:js1 && npm run build:scss1  |  node ./build/staticDist.js",
+        "build:lib:watch1": "concurrently \"npm run build:js:watch\" \"npm run build:scss:watch \" "
+    },
+    "dependencies": {
+        "axios": "^0.23.0",
+        "core-js": "^3.18.3",
+        "requirejs": "^2.3.6",
+        "vue": "^3.2.20",
+        "vue-router": "^4.0.11",
+        "vue3-sfc-loader": "^0.8.4"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.15.8",
+        "@babel/eslint-parser": "^7.15.8",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^21.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.5",
+        "@rollup/plugin-replace": "^3.0.0",
+        "@vue/babel-plugin-jsx": "^1.1.0",
+        "@vue/cli-plugin-babel": "~5.0.0-beta.5",
+        "@vue/cli-plugin-eslint": "~5.0.0-beta.5",
+        "@vue/cli-service": "~5.0.0-beta.5",
+        "@vue/compiler-sfc": "^3.2.20",
+        "@vue/component-compiler-utils": "^3.2.2",
+        "clean-css-cli": "^5.4.1",
+        "concurrently": "^6.3.0",
+        "eslint": "^8.0.0",
+        "eslint-formatter-codeframe": "^7.32.1",
+        "eslint-plugin-vue": "^7.19.1",
+        "requirejs": "^2.3.6",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.58.0",
+        "rollup-plugin-copy": "^3.4.0",
+        "rollup-plugin-styles": "^3.14.1",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-vue": "^6.0.0-beta.11",
+        "sass": "^1.42.1",
+        "sass-loader": "^12.2.0",
+        "vsce": "^1.100.1",
+        "vscode-test": "^1.6.1"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/vue3-essential",
+            "eslint:recommended"
+        ],
+        "parserOptions": {},
+        "rules": {}
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ]
+}

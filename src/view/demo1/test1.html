@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="require.js"></script>
+</head>
+<body>
+<div id="aaa">12</div>
+<script>
+    require.config({
+        paths: {
+            "jq": "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min"
+        }
+    });
+    require(['jq'],function(obj,a){
+        console.log(obj, a);
+        console.log($);
+        // console.log(obj('#aaa')[0]);
+    })
+</script>
+</body>
+</html>

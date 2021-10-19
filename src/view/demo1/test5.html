@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="require.js"></script>
+    <!--    <script src="index.js"></script>-->
+</head>
+<body>
+<div id="app">
+    <!--    <One/>-->
+    <Obs/>
+    <Obs1/>
+</div>
+<script type="module">
+    // import module1 from './index.js'
+    import importScript from "./importScript.js";
+
+    window.onload = function () {
+        // let objTarget = {}
+        // let obs = importScript('http://localhost:3000/public/test1.js', obj, Vue).then(() => {
+        //     console.log(obj.default);
+        //     return obj.default
+        // })
+        // let obj1 = {
+        //     two: 'http://localhost:3000/public/test2.js',
+        //     one: 'http://localhost:3000/public/test1.js'
+        // }
+        let obj = {};
+        let obj2 = {};
+        let a = importScript('http://localhost:3000/public/test2.js', obj2, Vue).then(() => {
+            return obj2.default
+        })
+        let b = importScript('http://localhost:3000/public/test1.js', obj, Vue).then(() => {
+            return obj.default
+        })
+        console.log(a, b);
+        Promise.all([a,b]).then(console.log)
+        // setTimeout(()=>{
+        //     // console.log(obj);
+        //     obj['two'].then(res=>{
+        //         console.log(res);
+        //     })
+        // },1000)
+        // const forEachs = (obj, objTarget) => {
+        //     Object.keys(obj).forEach((key) => {
+        //         let a = Object.create(null);
+        //         objTarget[key] = importScript(obj[key], a, Vue).then(() => {
+        //             // console.log(objTarget);
+        //             // console.log(objTarget[key]);
+        //             console.log(a.default);
+        //             return a.default
+        //         })
+        //     })
+        // }
+        //
+        // forEachs(obj1, objTarget)
+        // let obs1 = importScript('http://localhost:3000/public/test2.js', obj, Vue).then(() => {
+        //     console.log(obj.default);
+        //     return obj.default
+        // })
+        // setTimeout(() => {
+        //     console.log(objTarget);
+        // }, 1000)
+        Vue.createApp({
+
+            components: {
+                // Obs:Vue.defineAsyncComponent(()=>obs),
+                // Obs1:Vue.defineAsyncComponent(()=>obs1),
+            }
+        }).mount('#app')
+    }
+</script>
+</body>
+</html>
