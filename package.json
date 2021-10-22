@@ -19,12 +19,14 @@
         "core-js": "^3.18.3",
         "requirejs": "^2.3.6",
         "vue": "^3.2.20",
+        "vue-i18n": "^9.2.0-beta.13",
         "vue-router": "^4.0.11",
         "vue3-sfc-loader": "^0.8.4"
     },
     "devDependencies": {
         "@babel/core": "^7.15.8",
         "@babel/eslint-parser": "^7.15.8",
+        "@intlify/rollup-plugin-vue-i18n": "^2.0.3",
         "@rollup/plugin-babel": "^5.3.0",
         "@rollup/plugin-commonjs": "^21.0.0",
         "@rollup/plugin-node-resolve": "^13.0.5",

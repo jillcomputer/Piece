@@ -1,4 +1,5 @@
-import vue from "rollup-plugin-vue";
+import vuePlugin from "rollup-plugin-vue";
+import vueI18nPlugin from "rollup-plugin-vue-i18n";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { babel } from "@rollup/plugin-babel";
@@ -45,6 +46,7 @@ const capitalize = (s) => {
 const vuePluginConfig = {
   target: "browser",
   css: false,
+  customBlocks: ["i18n"],
   exposeFilename: false,
   preprocessStyles: true,
   template: {
@@ -77,7 +79,10 @@ export default () => {
           },
         },
         plugins: [
-          vue(vuePluginConfig),
+          vuePlugin(vuePluginConfig),
+          vueI18nPlugin({
+            include: path.resolve(__dirname, `./src/locales/**`),
+          }),
           nodeResolve({
             extensions: [".vue", ".js", ".ts"],
           }),
@@ -117,7 +122,7 @@ export default () => {
     //         nodeResolve({
     //             extensions: ['.vue', '.js','.ts']
     //         }),
-    //         vue(vuePluginConfig),
+    //         vuePlugin(vuePluginConfig),
     //         styles(),
     //         // postcss(),
     //         //typescript(typescriptConfig),
@@ -137,7 +142,7 @@ export default () => {
     //         nodeResolve({
     //             extensions: ['.vue', '.js','.ts']
     //         }),
-    //         vue(vuePluginConfig),
+    //         vuePlugin(vuePluginConfig),
     //         styles(),
     //         // postcss(),
     //         //typescript(typescriptConfig),
@@ -163,7 +168,7 @@ export default () => {
     //         nodeResolve({
     //             extensions: ['.vue', '.js','.ts']
     //         }),
-    //         vue(vuePluginConfig),
+    //         vuePlugin(vuePluginConfig),
     //         styles(),
     //         // postcss(),
     //         //typescript(typescriptConfig),
@@ -183,7 +188,7 @@ export default () => {
     //         nodeResolve({
     //             extensions: ['.vue', '.js','.ts']
     //         }),
-    //         vue(vuePluginConfig),
+    //         vuePlugin(vuePluginConfig),
     //         styles(),
     //         // postcss(),
     //         //typescript(typescriptConfig),

@@ -1,23 +1,37 @@
 <template>
   <div>
-    123
+    <form>
+      <label>{{ t("language") }}</label>
+      <select v-model="locale">
+        <option value="en_us">en_us</option>
+        <option value="zh_cn">zh_cn</option>
+      </select>
+    </form>
+    <p>{{ t("message.greeting") }}</p>
     <router-view />
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { useI18n } from "vue-i18n";
+import { defineComponent } from "vue";
 // import TestOneComponent from "@/view/testOneComponent/TestOneComponent.vue";
 // import HelloWorld from './components/HelloWorld.vue';
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     // TestOneComponent
-
     // DomeTwo
     // HelloWorld
-  }
+  },
+  setup() {
+    const { t, locale } = useI18n({
+      inheritLocale: true,
+      useScope: "global",
+    });
+    return { t, locale };
+  },
 });
 </script>
 
